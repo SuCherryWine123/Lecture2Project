@@ -15,8 +15,9 @@ public class Examples {
 	}
 
 	private static void readOneByte() {
+		InputStream input = null;
 		try {
-			InputStream input = new FileInputStream(
+			input = new FileInputStream(
 					"C:\\Su Cherry Wine\\workspaceSEadvance\\SEAdvanceLecture2\\Lecture2\\bytes.txt");
 			int intVal;
 			while ((intVal = input.read()) >= 0) {
@@ -25,13 +26,20 @@ public class Examples {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				input.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
 	private static void readOneChar() {
+		Reader reader = null;
 		try {
-			Reader reader = new FileReader(
-					"C:\\Su Cherry Wine\\workspaceSEadvance\\SEAdvanceLecture2\\Lecture2\\chars.txt");
+			reader = new FileReader("C:\\Su Cherry Wine\\workspaceSEadvance\\SEAdvanceLecture2\\Lecture2\\chars.txt");
 			int intVal;
 			while ((intVal = reader.read()) >= 0) {
 				char charVal = (char) intVal;
@@ -39,12 +47,20 @@ public class Examples {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
 	private static void readArrayOfByte() {
+		InputStream input = null;
 		try {
-			InputStream input = new FileInputStream(
+			input = new FileInputStream(
 					"C:\\Su Cherry Wine\\workspaceSEadvance\\SEAdvanceLecture2\\Lecture2\\bytes.txt");
 			int length;
 			byte[] byteBuff = new byte[10];
@@ -56,17 +72,24 @@ public class Examples {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				input.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
 
 	private static void readArrayOfChar() {
+		Reader reader = null;
 		try {
-			Reader input = new FileReader(
-					"C:\\Su Cherry Wine\\workspaceSEadvance\\SEAdvanceLecture2\\Lecture2\\chars.txt");
+			reader = new FileReader("C:\\Su Cherry Wine\\workspaceSEadvance\\SEAdvanceLecture2\\Lecture2\\chars.txt");
 			int length;
 			char[] charBuff = new char[10];
-			while ((length = input.read(charBuff)) >= 0) {
+			while ((length = reader.read(charBuff)) >= 0) {
 				for (int i = 0; i < length; i++) {
 					char charVal = charBuff[i];
 					System.out.print(charVal);
@@ -74,6 +97,13 @@ public class Examples {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
